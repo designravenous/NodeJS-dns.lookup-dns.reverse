@@ -1,8 +1,6 @@
 
 const fs = require('fs');
 
-
-
 class Filehandling{
     
     Add_Text_Method(textfile, text){
@@ -34,7 +32,6 @@ time.minute = new Date().getMinutes();
 time.seconds = new Date().getSeconds();
 
 var slogan = time.day + "/" + time.month + "/" + time.year + " Time: " + time.hour + ":" + time.minute + ":" + time.seconds;
-
 
 module.exports.Filehandling = Filehandling;
 module.exports.slogan = slogan;
