@@ -1,24 +1,30 @@
+const dns = require("dns");
+const fs = require("fs");
 
-const fs = require('fs');
+class DNS_CLASS{
 
-class Filehandling{
-    
-    Add_Text_Method(textfile, text){
-        fs.appendFile(textfile,text, function(err){
+    NSlookUp(destination, filename){
+        dns.lookup(destination, (err,address, family)=>{
             if(err) return err;
-            console.log("Appended Text added to the document, " + textfile);
-        })        
-    }
-    New_Text_Method(textfile,text){
-        fs.writeFile(textfile,text, function(err){
-            if (err) return err;
-            console.log("WriteFile Text have been added to the document, " + textfile);
+            var results = "\r\naddress for: " + destination + " = " + address + " IPv" + family;
+            console.log("address for: " + destination + " = " + address);
+            fs.appendFile(filename, results, function(err){
+                if(err) return err;
+                console.log("File completed");
+            } )
         })
     }
-    Read_File_Method(textfile){
-        fs.readFile(textfile,"utf8", function(err, data){
-            if (err) return err;
-            console.log(data);
+
+    ReverseLookUp(ip, filename){        
+        dns.reverse(ip, function(err,hostname){
+            if(err) console.log(err);
+            var results = "\r\nIP address: " + ip + " = " + hostname;
+
+            fs.appendFile(filename, results, function(){
+                if(err) return err;
+                console.log("ReverseLookup created for " + ip);
+                
+            })
         })
     }
 }
@@ -33,8 +39,7 @@ time.seconds = new Date().getSeconds();
 
 var slogan = time.day + "/" + time.month + "/" + time.year + " Time: " + time.hour + ":" + time.minute + ":" + time.seconds;
 
-module.exports.Filehandling = Filehandling;
+module.exports.DNS_CLASS = DNS_CLASS;
 module.exports.slogan = slogan;
-
 
 
