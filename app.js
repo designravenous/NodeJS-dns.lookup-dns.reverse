@@ -1,16 +1,32 @@
+const dns = require("dns");
+const fs = require("fs");
+const modules = require("./module");
 
-const fs = require('fs');
-const Textclass = require('./module');
-var mclass = Textclass;
+const filename = "dns_information.xls";
 
-var k = new mclass.Filehandling();
+let ip = {};
+ip.One = "10.61.100.101";
+ip.Two = "185.147.172.166";
 
-var textDocument = "text.txt";
+let destination = {};
+destination.One = "oppwa.com";
+destination.Two = "google.com";
+destination.Three = "hm.com";
+destination.Four = "designravenous.com";
 
-var inputText = "\r\nText line input for textDocument!";
+
+var Search = new modules.DNS_CLASS();
+
+Object.keys(destination).forEach(function(key) {
+
+    Search.NSlookUp(destination[key], filename);
+    
+  });
+  Object.keys(ip).forEach(function(key) {
+
+    Search.ReverseLookUp(ip[key], filename);
+    
+  });
 var time = mclass.slogan;
-
-k.Add_Text_Method(textDocument,inputText);
-k.Read_File_Method(textDocument);
 console.log(time);
 
