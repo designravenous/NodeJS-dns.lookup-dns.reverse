@@ -14,7 +14,7 @@ destination.One = "aftonbladet.se";
 destination.Two = "faktiskt.se";
 
 var Search = new modules.DNS_CLASS();
-var File = new modules.FileSystem();
+var File = new modules.FILE_SYSTEM();
 
 Object.keys(destination).forEach(function(key) {
     Search.NSlookUp(destination[key], filename);
@@ -26,4 +26,3 @@ Object.keys(destination).forEach(function(key) {
 
 File.ReadFile(filepath);
 Search.TimeStamp(filename);
-
