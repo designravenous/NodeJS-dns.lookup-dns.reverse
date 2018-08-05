@@ -59,7 +59,24 @@ class DNS_CLASS{
             console.log(current_time);
         } )
     }
+
+}
+
+class FILE_SYSTEM{
+
+    ReadFile(filepath){
+        fs.readFile(filepath,"utf8", function read(err,data){
+            if(err){
+                throw err;
+            }
+            var content = data;
+            readFunction(content);
+        })
+        function readFunction(content){
+            console.log(content);
+        }
+    }
 }
 module.exports.DNS_CLASS = DNS_CLASS;
-
+module.exports.FILE_SYSTEM = FILE_SYSTEM;
 
