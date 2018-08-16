@@ -5,8 +5,8 @@ class DNS_CLASS{
 
     NSlookUp(destination, filename){
         dns.lookup(destination, (err,address, family)=>{
-            if(err) return err;
-            var results = "\r\nnsLookUp for: " + destination + " = " + address + " IPv" + family;
+            if(err) console.log(err);
+            var results = "\r\nnsLookUp for: " + destination + " = " + address + " IPv: " + family;
             console.log("address for: " + destination + " = " + address);
             fs.appendFile(filename, results, function(err){
                 if(err) return err;
