@@ -1,5 +1,3 @@
 # nodeJS DNS
-DNS related searches and writing to file.
-NSLookup & Reverse DNS
-
+Script for DNS lookup and reverse for several Object Items. Filesystem Appendfile with results and Timestamp.
 
